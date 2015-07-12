@@ -1,3 +1,4 @@
 bin/js/game.js
 bin/js/game.js.map
+bin/js/game/*
 vendor/*
