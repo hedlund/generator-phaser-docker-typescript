@@ -122,7 +122,7 @@ module.exports = generators.Base.extend({
 	        	copy('vendor/phaser-official/build/phaser.min.js', 'bin/js/phaser.min.js');
 	        	copy('vendor/lodash/lodash.min.js', 'bin/js/lodash.min.js');
 
-	        	copy('vendor/phaser-official/phaser-logo-small.png', 'bin/assest/images/loader.png');
+	        	copy('vendor/phaser-official/phaser-logo-small.png', 'bin/assets/images/loader.png');
 	        }
 		},
 
