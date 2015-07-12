@@ -25,6 +25,10 @@ module.exports = generators.Base.extend({
 		this.option('skip-code', {
 			desc: 'Don\'t add settings for Visual Studio Code.'
 		});
+
+		this.option('skip-tsd', {
+			desc: 'Don\'t use tsd to handle type definitions.'
+		});
 	},
 
 	initializing: function () {
@@ -68,6 +72,8 @@ module.exports = generators.Base.extend({
 			this._template('bower.json', 'bower.json', {
 				name: _.kebabCase(this.name)
 			});
+			this._copy('tsd.json');
+			this._copy('tsd.d.ts', 'typings/tsd.d.ts');
 		},
 		visualStudioCode: function() {
 			if (!this.options['skip-code']) {
@@ -94,6 +100,10 @@ module.exports = generators.Base.extend({
 		dependencies: function() {
 			this.log(chalk.magenta('Install the dependencies...'));
 			this.bowerInstall(null, null, this.install._postInstall.bind(this));
+
+			if (!this.options['skip-tsd']) {
+				this.spawnCommand('tsd', [ 'install', 'lodash', '--save' ]);
+			}
 		},
 
 		_postInstall: function() {
@@ -103,15 +113,16 @@ module.exports = generators.Base.extend({
 			}
 			else {
 				var copy = this.install._copyDependency.bind(this);
-				copy('vendor/phaser-official/typescript/p2.d.ts', 'tsDefinitions/p2.d.ts');
-				copy('vendor/phaser-official/typescript/phaser.comments.d.ts', 'tsDefinitions/phaser.comments.d.ts');
-	        	copy('vendor/phaser-official/typescript/pixi.comments.d.ts', 'tsDefinitions/pixi.comments.d.ts');
+				copy('vendor/phaser-official/typescript/p2.d.ts', 'typings/phaser/p2.d.ts');
+				copy('vendor/phaser-official/typescript/phaser.comments.d.ts', 'typings/phaser/phaser.comments.d.ts');
+	        	copy('vendor/phaser-official/typescript/pixi.comments.d.ts', 'typings/phaser/pixi.comments.d.ts');
 
 	        	copy('vendor/phaser-official/build/phaser.js', 'bin/js/phaser.js');
 	        	copy('vendor/phaser-official/build/phaser.map', 'bin/js/phaser.map');
 	        	copy('vendor/phaser-official/build/phaser.min.js', 'bin/js/phaser.min.js');
+	        	copy('vendor/lodash/lodash.min.js', 'bin/js/lodash.min.js');
 
-	        	copy('vendor/phaser-official/resources/Phaser Logo/PNG/Phaser-Logo-Small.png', 'bin/assest/images/loader.png');
+	        	copy('vendor/phaser-official/phaser-logo-small.png', 'bin/assest/images/loader.png');
 	        }
 		},
 

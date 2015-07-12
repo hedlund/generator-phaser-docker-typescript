@@ -8,12 +8,10 @@
 	},
 	"filesGlob": [
 		"src/**/*.ts",
-		"tsDefinitions/**/*.d.ts"
+		"typings/**/*.d.ts"
 	],
 	"files": [
-		"tsDefinitions/phaser.comments.d.ts",
-		"tsDefinitions/pixi.comments.d.ts",
-		"tsDefinitions/p2.d.ts",
+		"typings/tsd.d.ts",
 		"src/app.ts",
 		"src/<%= module %>/Game.ts",
 		"src/<%= module %>/State/Boot.ts",
