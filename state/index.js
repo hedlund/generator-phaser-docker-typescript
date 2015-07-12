@@ -15,6 +15,10 @@ module.exports = generators.Base.extend({
 			required: false,
 			desc: 'The name of the state'
 		});
+
+		this.option('skip-config', {
+			desc: 'Don\'t add the new file to tsconfig.'
+		});
 	},
 
 	initializing: function() {
@@ -51,10 +55,12 @@ module.exports = generators.Base.extend({
 		);
 
 		//Add to dependencies
-		var configPath = this.destinationPath('tsconfig.json'),
-			config = this.fs.readJSON(configPath);
-		config['files'].push(filename);
-		this.fs.writeJSON(configPath, config);
+		if (!this.options['skip-config']) {
+			var configPath = this.destinationPath('tsconfig.json'),
+				config = this.fs.readJSON(configPath);
+			config['files'].push(filename);
+			this.fs.writeJSON(configPath, config);
+		}
 	},
 
 	end: function() {
