@@ -5,7 +5,11 @@
   "files": [
     "app"
   ],
-  "author": "henrik@hedlund.im",
+  "author": {
+    "name": "Henrik Hedlund",
+    "email": "henrik@hedlund.im",
+    "url": "http://hedlund.im"
+  },
   "keywords": [
     "yeoman-generator"
   ],
