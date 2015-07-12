@@ -1,9 +1,10 @@
 {
   "name": "generator-phaser-docker-typescript",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A basic Phaser TypeScript generator using Docker to serve the game files",
   "files": [
-    "app"
+    "app",
+    "state"
   ],
   "author": {
     "name": "Henrik Hedlund",
