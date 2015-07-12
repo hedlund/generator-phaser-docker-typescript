@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "commonjs",
+		"sourceMap": true
+	},
+	"filesGlob": [
+		"src/**/*.ts",
+		"tsDefinitions/**/*.d.ts"
+	],
+	"files": [
+		"src/app.ts",
+		"src/<%= module %>/Game.ts",
+		"src/<%= module %>/State/Boot.ts",
+		"src/<%= module %>/State/Main.ts",
+		"src/<%= module %>/State/Preload.ts",
+		
+		"tsDefinitions/phaser.comments.d.ts",
+		"tsDefinitions/pixi.comments.d.ts",
+		"tsDefinitions/p2.d.ts"
+	]
+}

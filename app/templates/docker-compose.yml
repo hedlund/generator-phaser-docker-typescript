@@ -1,0 +1,6 @@
+game:
+    image: hedlund/phaser
+    ports:
+      - "80:80"
+    volumes:
+      - bin:/app
