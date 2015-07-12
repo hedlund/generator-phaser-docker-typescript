@@ -21,6 +21,10 @@ module.exports = generators.Base.extend({
 			alias: 'm',
 			desc: 'The name of the main module'
 		});
+
+		this.option('skip-code', {
+			desc: 'Don\'t add settings for Visual Studio Code.'
+		});
 	},
 
 	initializing: function () {
@@ -66,8 +70,10 @@ module.exports = generators.Base.extend({
 			});
 		},
 		visualStudioCode: function() {
-			this.log(chalk.magenta('Generate Visual Studio Code settings...'));
-			this._copy('settings', '.settings');
+			if (!this.options['skip-code']) {
+				this.log(chalk.magenta('Generate Visual Studio Code settings...'));
+				this._copy('settings', '.settings');
+			}
 		}
 	},
 
